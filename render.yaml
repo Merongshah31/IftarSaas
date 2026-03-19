@@ -1,7 +1,7 @@
 services:
   - type: web
     name: iftar-management-backend
-    runtime: php
+    env: php
     rootDir: iftar_management_system
     plan: free
     buildCommand: composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader && php artisan package:discover --ansi
