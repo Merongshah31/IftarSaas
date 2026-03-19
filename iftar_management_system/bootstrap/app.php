@@ -13,6 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        // Render and other managed platforms terminate TLS at proxy/load balancer.
+        $middleware->trustProxies(at: '*');
+
         // Register tenant middleware
         $middleware->alias([
             'tenant' => \App\Http\Middleware\SetTenantContext::class,
