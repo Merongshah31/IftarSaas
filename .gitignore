@@ -1,0 +1,13 @@
+# Monorepo root ignores
+vendor/
+node_modules/
+
+# Local environment files
+.env
+*.env
+
+# Logs and temporary files
+*.log
+
+# Documentation files
+**/*.md
