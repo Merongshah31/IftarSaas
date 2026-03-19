@@ -18,6 +18,14 @@ RUN composer install --no-interaction --no-dev --prefer-dist --optimize-autoload
 # Copy app source
 COPY . .
 
+# Ensure framework cache/view/session directories exist for runtime on Render
+RUN mkdir -p storage/framework/views \
+    storage/framework/cache/data \
+    storage/framework/sessions \
+    storage/logs \
+    bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache
+
 # Render injects PORT at runtime
 EXPOSE 10000
 
